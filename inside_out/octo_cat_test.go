@@ -20,7 +20,7 @@ func (c *Cat) LegsDescription() string {
 }
 
 type OctoCat struct {
-	Cat
+	*Cat
 }
 
 func (o *OctoCat) Legs() int {
@@ -29,10 +29,12 @@ func (o *OctoCat) Legs() int {
 }
 
 func Test(t *testing.T) {
-	cat := Cat{}
+	cat := &Cat{}
 	assert.Equal(t, 4, cat.Legs())
 	assert.Equal(t, "Legs:4", cat.LegsDescription())
+	
 	octoCat := &OctoCat{}
 	assert.Equal(t, 8, octoCat.Legs())
+	// Ошибка
 	assert.Equal(t, "Legs:8", octoCat.LegsDescription())
 }
