@@ -21,3 +21,8 @@ func (c *TreadSafeCounter) Value() int64 {
 }
 
 type counter int64
+
+// Dec случайно объявлен публичным на приватном типе, который был встроен.
+func (c *counter) Dec() {
+	*c--
+}
